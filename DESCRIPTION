@@ -1,7 +1,7 @@
 Package: mssm
 Type: Package
 Title: Multivariate State Space Models
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(
   person("Benjamin", "Christoffersen", 
          email = "boennecd@gmail.com", 
@@ -27,9 +27,9 @@ RoxygenNote: 6.1.1
 SystemRequirements: C++11
 Suggests: testthat, microbenchmark, Ecdat
 NeedsCompilation: yes
-Packaged: 2019-05-31 19:16:45 UTC; boennecd
+Packaged: 2019-08-08 19:51:19 UTC; boennecd
 Author: Benjamin Christoffersen [cre, aut],
   Anthony Williams [cph]
 Maintainer: Benjamin Christoffersen <boennecd@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-05-31 22:01:20 UTC
+Date/Publication: 2019-08-08 22:50:02 UTC

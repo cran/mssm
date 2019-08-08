@@ -181,7 +181,7 @@ struct comp_w_centroid {
     while(yi > -1){
       const query_node* this_node = *yip;
 
-      if(this_node->node.is_leaf()){
+      if(this_node->is_leaf){
         const arma::uword
         this_start = this_node->node.get_start(),
           this_end   = this_node->node.get_end();
@@ -226,7 +226,7 @@ struct  comp_all {
 
   void operator()(){
 #ifdef MSSM_DEBUG
-    if(!X_node.node.is_leaf() or !Y_node.node.is_leaf())
+    if(!X_node.is_leaf or !Y_node.is_leaf)
       throw std::domain_error(
           "comp_all called with non-leafs");
 #endif
@@ -350,9 +350,9 @@ struct comp_weights {
   arma::mat *Y_extra;
   FSKA_cpp_xtra_func &extra_func;
 
-  void operator()
-  (const source_node<has_extra> &X_node, const query_node &Y_node,
-   const bool is_main_thread) const
+  template<bool is_main_thread>
+  void do_work
+  (const source_node<has_extra> &X_node, const query_node &Y_node) const
   {
     /* check if we need to clear futures. TODO: avoid the use of list here? */
     if(is_main_thread and futures.size() > max_futures){
@@ -386,8 +386,8 @@ struct comp_weights {
          Y_node.node.n_elem < stop_n_elem){
       futures.push_back(
         pool.submit(std::bind(
-            &comp_weights<has_extra>::operator(), std::ref(*this),
-            std::cref(X_node), std::cref(Y_node), false)));
+            &comp_weights<has_extra>::do_work<false>, std::ref(*this),
+            std::cref(X_node), std::cref(Y_node))));
       return;
     }
 
@@ -408,7 +408,7 @@ struct comp_weights {
       return;
     }
 
-    if(X_node.node.is_leaf() and Y_node.node.is_leaf()){
+    if(X_node.is_leaf and Y_node.is_leaf){
       comp_all<has_extra> task = {
         log_weights, X_node, Y_node,
         X, ws_log, Y, kernel,
@@ -421,23 +421,23 @@ struct comp_weights {
       return;
     }
 
-    if(!X_node.node.is_leaf() and  Y_node.node.is_leaf()){
-      operator()(*X_node.left ,  Y_node      , is_main_thread);
-      operator()(*X_node.right,  Y_node      , is_main_thread);
+    if(!X_node.is_leaf and  Y_node.is_leaf){
+      do_work<is_main_thread>(*X_node.left ,  Y_node      );
+      do_work<is_main_thread>(*X_node.right,  Y_node      );
 
       return;
     }
-    if( X_node.node.is_leaf() and !Y_node.node.is_leaf()){
-      operator()( X_node      , *Y_node.left , is_main_thread);
-      operator()( X_node      , *Y_node.right, is_main_thread);
+    if( X_node.is_leaf and !Y_node.is_leaf){
+      do_work<is_main_thread>( X_node      , *Y_node.left );
+      do_work<is_main_thread>( X_node      , *Y_node.right);
 
       return;
     }
 
-    operator()(  *X_node.left , *Y_node.left , is_main_thread);
-    operator()(  *X_node.left , *Y_node.right, is_main_thread);
-    operator()(  *X_node.right, *Y_node.left , is_main_thread);
-    operator()(  *X_node.right, *Y_node.right, is_main_thread);
+    do_work<is_main_thread>(  *X_node.left , *Y_node.left );
+    do_work<is_main_thread>(  *X_node.left , *Y_node.right);
+    do_work<is_main_thread>(  *X_node.right, *Y_node.left );
+    do_work<is_main_thread>(  *X_node.right, *Y_node.right);
   }
 };
 
@@ -480,9 +480,6 @@ FSKA_cpp_permutation FSKA_cpp(
     t2.get();
   }
 
-  /* arma::mat &Y, const arma::uword N_min, arma::mat *xtra,
-   thread_pool &pool*/
-
   /* form trees */
   auto X_root = get_X_root<has_extra>(X, ws_log, N_min, X_extra, pool);
   auto Y_root = get_Y_root<has_extra>(Y,         N_min, Y_extra, pool);
@@ -496,7 +493,7 @@ FSKA_cpp_permutation FSKA_cpp(
   comp_weights<has_extra> worker {
     log_weights, X, ws_log, Y, eps,
     kernel, pool, futures, X_extra, Y_extra, extra_func };
-  worker(X_root_source, Y_root_query, true);
+  worker.template do_work<true>(X_root_source, Y_root_query);
 
   while(!futures.empty()){
     futures.back().get();
@@ -543,7 +540,7 @@ template<bool has_extra>
 arma::vec set_centroid
   (const source_node<has_extra> &snode, const arma::mat &X, const arma::vec &ws)
 {
-  if(snode.node.is_leaf()){
+  if(snode.is_leaf){
     arma::vec centroid(X.n_rows, arma::fill::zeros);
     const auto &indices = snode.node.get_indices();
     double sum_w = 0.;
@@ -566,7 +563,7 @@ arma::vec set_centroid
 template<bool has_extra>
 double set_weight(const source_node<has_extra> &snode, const arma::vec &ws)
 {
-  if(snode.node.is_leaf()){
+  if(snode.is_leaf){
     const auto &indices = snode.node.get_indices();
     double weight = 0.;
     for(auto idx : indices)
@@ -580,7 +577,7 @@ double set_weight(const source_node<has_extra> &snode, const arma::vec &ws)
 
 template<class T>
 hyper_rectangle set_borders(const T &snode, const arma::mat &X){
-  if(snode.node.is_leaf())
+  if(snode.is_leaf)
     return hyper_rectangle(X, snode.node.get_indices());
 
   return hyper_rectangle(snode.left->borders, snode.right->borders);
@@ -604,7 +601,7 @@ std::unique_ptr<arma::vec> set_extra
   ptr_out out(new arma::vec(extra->n_rows, arma::fill::none));
   arma::vec &xtr = *out;
 
-  if(snode.node.is_leaf()){
+  if(snode.is_leaf){
     xtr.zeros();
     const auto &indices = snode.node.get_indices();
     double sum_w = 0.;
