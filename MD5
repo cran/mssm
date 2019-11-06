@@ -1,4 +1,4 @@
-a937b1430ccb6d7440f8f0548aed504b *DESCRIPTION
+f61e06fb764e24bae3a2eb889c4f2f26 *DESCRIPTION
 da50e8494341e7e5eecacf9d6e6cc125 *NAMESPACE
 2c6804b3f51c911bff44ccdf9a2b08b5 *NEWS.md
 0ee955288714acafafb1ed45ace72e43 *R/RcppExports.R
@@ -41,18 +41,18 @@ e9610e8a0eb8565eb14ca801edce3aac *man/logLik.mssm.Rd
 ce3a7bc2d9005bb8fd193c5c1447dc73 *man/mssm_control.Rd
 74b56c265bebf27ce490105ba8b9b785 *man/plot.mssm.Rd
 4cc32632e5ea39e766c817befbbe5f2b *man/plot.mssmEss.Rd
-b202975cbf5e0f2a1c0140e3a4d2d9d9 *src/Makevars
-81f3d739ed03b05fcd46eba7ecda6346 *src/Makevars.win
+cdc210aea0e9783e355b245d99f48a1e *src/Makevars
+2e653c1d35e0521c427001bf65175e8a *src/Makevars.win
 f563680a18cbd1b87766c0b6fd445d5a *src/PF.cpp
 f452067dfad495f3fcc83f19e6e0f8df *src/PF.h
 de16bcb2654c8c2efb8fa0c1272c9edb *src/RcppExports.cpp
 935f864b5b3c20c4aa74edee623b899b *src/arma.h
-911d3f44358f0a99ee76ad3bde5e0bd1 *src/blas-lapack.cpp
-051615e68ca84fae0fc7c6364d2cf277 *src/blas-lapack.h
+95baa268535d248f0b3c4d039ddc718c *src/blas-lapack.cpp
+64a525127e14683520f4cb3940e444d3 *src/blas-lapack.h
 0ee5b2db0736528aa51fef502baba21c *src/cloud.cpp
 c6e1d2dbc9fe71cde5c40ada8b322b10 *src/cloud.h
 67fc77cbd776a14e48ef02651d0e698c *src/cpp_to_R.cpp
-a5e06dd91cac0c7f8212b6dc575951df *src/dists.cpp
+51d9226bfb946ee53dc414a4d5d41654 *src/dists.cpp
 7cca0b6c7e73a6ecb1add99dcdcf62ba *src/dists.h
 091a79a723e84e3ecd22a883e6f19b0e *src/dup-mult.cpp
 c559f68876c53685ef51815515d19b94 *src/dup-mult.h
@@ -73,7 +73,7 @@ e4bd704c807bae9c04e77ea6e60dc5d1 *src/samplers.cpp
 6eb82cf7ce45e84420bebe87ed113170 *src/samplers.h
 04c77310bd4ce95f001d5f8d71f2a27b *src/smoother.cpp
 b08e2310a729fb71db4ded99cb976162 *src/smoother.h
-f1670f2a7010ac090f813ba00ad89dda *src/stats-comp-helper.cpp
+cda622b7ea8310cd96df32bb0dc76e42 *src/stats-comp-helper.cpp
 6bc274214ed8d525697f9a99c1149e0f *src/stats-comp-helper.h
 e19ecaa5950f2c067e49fd43fa4d8a62 *src/test-cloud.cpp
 6a55a2ca933f363abf2bd88a22336d6d *src/test-dists.cpp
@@ -87,7 +87,7 @@ e20ca8238a0258487d724e1aefd174bf *src/test-utils.cpp
 66821227f0e0c5a19dcabaeb79027f30 *src/thread_pool.cpp
 bf87001572c86f965075236575f94cf5 *src/thread_pool.h
 cdfd0267fa519f79fe0bd7f1ed1eef51 *src/utils-test.h
-8138d3e5e5669259829af04d6ead7877 *src/utils.cpp
+2ba7ac8baa47263912d8e0603f9b4e4d *src/utils.cpp
 d4ea5d9828004138a9f285d638e6d7ba *src/utils.h
 c390b6b401d71b031cce5f1dfd5d2f7b *tests/testthat.R
 ea777d577e35b4d1713370af2d966268 *tests/testthat/FSKA-old-res-small-eps-exact.RDS
