@@ -1,8 +1,8 @@
-f61e06fb764e24bae3a2eb889c4f2f26 *DESCRIPTION
+c748e345bf519279f8e0985396dec7bd *DESCRIPTION
 da50e8494341e7e5eecacf9d6e6cc125 *NAMESPACE
-2c6804b3f51c911bff44ccdf9a2b08b5 *NEWS.md
+384d5149625c8e5a5b752c635d0a5ac6 *NEWS.md
 0ee955288714acafafb1ed45ace72e43 *R/RcppExports.R
-c3d70bc56ed430edf204fd22992d9e8d *R/catch-routine-registration.R
+bcd4ab5fe3d3bb18e895286f8643a958 *R/catch-routine-registration.R
 4f4044634b88a5f9a9deaaf9379e432b *R/ess.R
 abe6de4415ca8e77c5502064a379c321 *R/mssm.R
 86371dacf1a5db8d348913a07d57e486 *R/plot.R
@@ -45,7 +45,7 @@ cdc210aea0e9783e355b245d99f48a1e *src/Makevars
 2e653c1d35e0521c427001bf65175e8a *src/Makevars.win
 f563680a18cbd1b87766c0b6fd445d5a *src/PF.cpp
 f452067dfad495f3fcc83f19e6e0f8df *src/PF.h
-de16bcb2654c8c2efb8fa0c1272c9edb *src/RcppExports.cpp
+d52024ca91a0de2ff9a39380f8671fc0 *src/RcppExports.cpp
 935f864b5b3c20c4aa74edee623b899b *src/arma.h
 95baa268535d248f0b3c4d039ddc718c *src/blas-lapack.cpp
 64a525127e14683520f4cb3940e444d3 *src/blas-lapack.h
@@ -60,7 +60,7 @@ e2ac41c12362cac8972f5fcd1732d759 *src/fast-kernel-approx.cpp
 998a641e31426465ed10abf5e076dcb8 *src/fast-kernel-approx.h
 e0ad2ed000e07fd58563e4df663be136 *src/kd-tree.cpp
 2ffd31a63ac60dff0b7ff806079e3d58 *src/kd-tree.h
-8c3125c8b4ff7d78ec87dff6bb325ac7 *src/laplace.cpp
+375076f7b98d858e599b50efb95ae01d *src/laplace.cpp
 d454ad82bed8d796c383ddd7305fba6f *src/laplace.h
 f1fb22b2a45ce68b683d8ff1c6a0e057 *src/misc.h
 ba9691fbf51ea819156dfb90984f3c1b *src/problem_data.cpp
@@ -197,6 +197,6 @@ d2d0079d0b05adc96b73d3753a40e0d0 *tests/testthat/poisson_log.RDS
 56afbebd5ec9096de598bf2513f77dd8 *tests/testthat/test-cpp.R
 2e42dd3b485ad4d2fd2accaf89415017 *tests/testthat/test-gets-old-FSKA.R
 705e6db73d80d3554a446b088fc2da43 *tests/testthat/test-gets-old-mssm.R
-6eb32119d75c7d68c8242b9d9376f687 *tests/testthat/test-man-pages.R
+826d2d34ad343cb3e7c13a7d32f90876 *tests/testthat/test-man-pages.R
 ea6e8720537f25158efa3bf8cb145711 *tests/testthat/test-misc.R
 e58183d96463f1daf803183d11d6cec3 *tests/testthat/test-sample-methods.R
