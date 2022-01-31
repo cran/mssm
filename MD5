@@ -1,6 +1,6 @@
-714dba899d6ec61a8c13e83d9c1a82d4 *DESCRIPTION
+d5a7a5493917574c460541b93bb95901 *DESCRIPTION
 da50e8494341e7e5eecacf9d6e6cc125 *NAMESPACE
-384d5149625c8e5a5b752c635d0a5ac6 *NEWS.md
+dff19c50e844e15f9db6643abd9d4302 *NEWS.md
 0ee955288714acafafb1ed45ace72e43 *R/RcppExports.R
 bcd4ab5fe3d3bb18e895286f8643a958 *R/catch-routine-registration.R
 4f4044634b88a5f9a9deaaf9379e432b *R/ess.R
@@ -60,14 +60,14 @@ e2ac41c12362cac8972f5fcd1732d759 *src/fast-kernel-approx.cpp
 998a641e31426465ed10abf5e076dcb8 *src/fast-kernel-approx.h
 e0ad2ed000e07fd58563e4df663be136 *src/kd-tree.cpp
 2ffd31a63ac60dff0b7ff806079e3d58 *src/kd-tree.h
-375076f7b98d858e599b50efb95ae01d *src/laplace.cpp
+a416a982a2162577d44c814ff3530030 *src/laplace.cpp
 d454ad82bed8d796c383ddd7305fba6f *src/laplace.h
 f1fb22b2a45ce68b683d8ff1c6a0e057 *src/misc.h
 ba9691fbf51ea819156dfb90984f3c1b *src/problem_data.cpp
 7d542f5599ed7a494b9e3ad2fa0a5bde *src/problem_data.h
 eaa7795c06f3c9326eab1810861d243b *src/profile.cpp
 ea0057711e14723c19d42aab4a1cd584 *src/profile.h
-ab3bd48be06575e550def00095177a4a *src/proposal_dist.cpp
+d5ef12d0f4700cae3786eee2433e8c46 *src/proposal_dist.cpp
 bcc96c871ae81332629711092c0c92e3 *src/proposal_dist.h
 e4bd704c807bae9c04e77ea6e60dc5d1 *src/samplers.cpp
 6eb82cf7ce45e84420bebe87ed113170 *src/samplers.h
